@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<meta name="description" content="尹国强 — 做 AI 技能、数字产品和 AI 内容的个人创作者：在 WorkBuddy、扣子开发 AI 技能，在小红书做速查类数字产品，也接小商家和个人的做图、PPT、短视频内容。" />
+<link rel="icon" href="data:," />
+<title>尹国强 — AI 技能 · 数字产品 · AI 内容</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#FFF9EC;
+    --paper-2:#FFF3D6;
+    --card:#FFFFFF;
+    --ink:#2E2C22;
+    --ink-soft:#5C5947;
+    --olive:#6C7F3A;
+    --olive-dark:#4C5E24;
+    --olive-soft:#EEF2DC;
+    --orange:#FF7A29;
+    --orange-dark:#E85D0C;
+    --orange-soft:#FFE8D6;
+    --pink-soft:#FFE3E0;
+    --blue-soft:#E1EEF7;
+    --line:#2E2C22;
+    --radius:18px;
+    --shadow:5px 5px 0 rgba(46,44,34,.92);
+    --shadow-sm:3px 3px 0 rgba(46,44,34,.92);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    color:var(--ink);
+    font-family:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background-color:var(--paper);
+    background-image:radial-gradient(rgba(160,140,80,.20) 1.3px, transparent 1.3px);
+    background-size:22px 22px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--orange);color:#fff}
+  a{color:inherit}
+  button,[role="button"],summary{ min-height:2.75rem; }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,249,236,.94);
+    backdrop-filter:blur(6px);
+    border-bottom:2px solid var(--line);
+  }
+  .topbar-in{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:10px 0}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+  .brand-mark{
+    width:42px;height:42px;flex:none;border:2px solid var(--line);border-radius:12px;
+    background:var(--olive);color:#fff;display:grid;place-items:center;
+    font-family:"ZCOOL KuaiLe",sans-serif;font-size:19px;box-shadow:var(--shadow-sm);
+    transform:rotate(-3deg);
+  }
+  .brand b{font-size:17px;letter-spacing:.02em;display:block;line-height:1.2}
+  .brand small{font-size:12.5px;color:var(--olive-dark);letter-spacing:.06em;font-weight:700}
+  nav.main{display:flex;gap:6px;flex-wrap:wrap}
+  nav.main a{
+    text-decoration:none;font-weight:700;font-size:14.5px;
+    padding:9px 14px;border-radius:999px;border:2px solid transparent;
+    display:inline-flex;align-items:center;min-height:40px;
+  }
+  nav.main a:hover{border-color:var(--line);background:#fff;box-shadow:var(--shadow-sm)}
+  .nav-cta{background:var(--orange)!important;color:#fff;border-color:var(--line)!important;box-shadow:var(--shadow-sm)}
+
+  /* ---------- shared bits ---------- */
+  section{padding:64px 0 8px}
+  .tape{
+    display:inline-block;background:rgba(255,214,120,.75);
+    padding:3px 16px;font-size:12.5px;font-weight:700;letter-spacing:.14em;color:#7A5A12;
+    transform:rotate(-1.6deg);border-left:2px dashed rgba(122,90,18,.35);border-right:2px dashed rgba(122,90,18,.35);
+  }
+  .sec-head{margin-bottom:28px;max-width:720px}
+  .sec-head h2{
+    font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif;font-weight:400;
+    font-size:clamp(28px,4.6vw,40px);line-height:1.25;margin:12px 0 8px;letter-spacing:.01em;
+  }
+  .sec-head p{margin:0;color:var(--ink-soft);font-size:16px}
+  .sticker{
+    display:inline-flex;align-items:center;gap:6px;background:#fff;border:2px solid var(--line);
+    border-radius:999px;padding:5px 13px;font-size:13px;font-weight:700;box-shadow:var(--shadow-sm);
+  }
+  .sticker.olive{background:var(--olive-soft)}
+  .sticker.orange{background:var(--orange);color:#fff}
+  .sticker.pink{background:var(--pink-soft)}
+  .sticker.blue{background:var(--blue-soft)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    text-decoration:none;font-weight:900;font-size:16px;cursor:pointer;
+    border:2px solid var(--line);border-radius:999px;padding:13px 26px;min-height:52px;
+    box-shadow:var(--shadow);transition:transform .12s ease, box-shadow .12s ease;background:#fff;color:var(--ink);
+  }
+  .btn:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 rgba(46,44,34,.92)}
+  .btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 rgba(46,44,34,.92)}
+  .btn.primary{background:var(--olive);color:#fff}
+  .btn.orange{background:var(--orange);color:#fff}
+  .card{
+    background:var(--card);border:2px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+  }
+  .status{
+    display:inline-flex;align-items:center;gap:6px;border:2px solid var(--line);border-radius:999px;
+    padding:3px 12px;font-size:12.5px;font-weight:900;box-shadow:var(--shadow-sm);white-space:nowrap;
+  }
+  .status.review{background:#FFD166}
+  .status.prep{background:#fff}
+  .status.free{background:var(--olive);color:#fff}
+
+  /* ---------- hero ---------- */
+  .hero{padding:52px 0 10px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  .hero .kick{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+  .hero h1{
+    font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif;font-weight:400;
+    font-size:clamp(44px,7.5vw,72px);line-height:1.12;margin:0 0 6px;
+  }
+  .hero h1 .hl{
+    background:linear-gradient(transparent 62%, #FFD166 62%, #FFD166 94%, transparent 94%);
+    padding:0 4px;
+  }
+  .hero .en{font-family:"Caveat",cursive;font-size:clamp(22px,3vw,30px);color:var(--orange-dark);margin:0 0 14px;transform:rotate(-1deg);display:inline-block}
+  .hero .tagline{font-size:clamp(19px,2.6vw,24px);font-weight:900;margin:0 0 12px}
+  .hero .lead{color:var(--ink-soft);font-size:16.5px;margin:0 0 26px;max-width:34em}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+  .hero-notes{display:flex;gap:8px;flex-wrap:wrap}
+  .hero-notes .sticker{transform:rotate(-1deg)}
+  .hero-notes .sticker:nth-child(2){transform:rotate(1.2deg)}
+  .hero-notes .sticker:nth-child(3){transform:rotate(-.6deg)}
+
+  /* collage stage */
+  .stage{position:relative;min-height:400px}
+  .slide{
+    position:absolute;background:#fff;border:2px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow);padding:16px 18px;width:78%;
+  }
+  .slide .s-tag{font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--olive-dark)}
+  .slide h3{margin:6px 0 8px;font-size:19px;line-height:1.35}
+  .slide p{margin:0;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+  .slide-1{top:6px;left:0;transform:rotate(-2.4deg);z-index:2}
+  .slide-2{top:132px;right:0;left:auto;transform:rotate(1.8deg);z-index:3;background:#FFFDF6}
+  .slide-3{bottom:0;left:8%;transform:rotate(-1deg);z-index:1;background:var(--olive-soft)}
+  .bars{display:flex;align-items:flex-end;gap:7px;height:56px;margin-top:10px}
+  .bars i{flex:1;border:2px solid var(--line);border-radius:5px 5px 0 0;display:block}
+  .bars i:nth-child(1){height:38%;background:#FFD166}
+  .bars i:nth-child(2){height:62%;background:var(--orange)}
+  .bars i:nth-child(3){height:84%;background:var(--olive)}
+  .bars i:nth-child(4){height:100%;background:var(--olive-dark)}
+  .dots-row{display:flex;gap:6px;margin-top:10px}
+  .dots-row i{width:12px;height:12px;border-radius:50%;border:2px solid var(--line);display:block}
+  .mini-lines i{display:block;height:8px;border-radius:99px;background:#E9E2CB;margin-top:7px}
+  .mini-lines i:nth-child(1){width:92%}.mini-lines i:nth-child(2){width:74%;background:#DDE5C4}.mini-lines i:nth-child(3){width:55%;background:#FFD9BE}
+  .pin{
+    position:absolute;z-index:5;background:var(--orange);color:#fff;border:2px solid var(--line);
+    border-radius:50%;width:64px;height:64px;display:grid;place-items:center;text-align:center;
+    font-size:12px;font-weight:900;line-height:1.3;box-shadow:var(--shadow-sm);transform:rotate(8deg);
+    top:-8px;right:6%;
+  }
+
+  /* ticker */
+  .ticker{
+    margin:56px 0 4px;background:var(--olive);border-top:2px solid var(--line);border-bottom:2px solid var(--line);
+    overflow:hidden;white-space:nowrap;
+  }
+  .ticker-in{display:inline-block;padding:10px 0;color:#fff;font-weight:700;font-size:15px;letter-spacing:.06em;animation:tick 30s linear infinite}
+  .ticker-in span{margin:0 14px}
+  .ticker-in b{color:#FFD166;font-weight:700}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion: reduce){
+    .ticker-in{animation:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* ---------- directions: folder ---------- */
+  .folder{position:relative;margin-top:34px}
+  .folder-tab{
+    position:absolute;top:-32px;left:22px;background:var(--paper-2);border:2px solid var(--line);border-bottom:none;
+    border-radius:14px 14px 0 0;padding:7px 20px 9px;font-weight:900;font-size:14px;z-index:1;
+  }
+  .folder-body{
+    background:#FFFDF4;border:2px solid var(--line);border-radius:6px 18px 18px 18px;box-shadow:var(--shadow);
+    padding:30px 26px 26px;
+  }
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .svc{background:#fff;border:2px solid var(--line);border-radius:14px;padding:22px 20px 18px;position:relative}
+  .svc:nth-child(1){transform:rotate(-.5deg)}
+  .svc:nth-child(2){transform:rotate(.4deg)}
+  .svc:nth-child(3){transform:rotate(-.4deg)}
+  .svc .no{
+    position:absolute;top:-14px;right:16px;width:30px;height:30px;border-radius:50%;
+    border:2px solid var(--line);display:grid;place-items:center;font-weight:900;font-size:14px;background:#FFD166;
+  }
+  .svc:nth-child(2) .no{background:var(--orange);color:#fff}
+  .svc:nth-child(3) .no{background:var(--olive);color:#fff}
+  .svc h3{margin:2px 0 6px;font-size:19px}
+  .svc .sub{margin:0 0 12px;color:var(--ink-soft);font-size:14px}
+  .svc ul{margin:0;padding:0;list-style:none}
+  .svc li{padding:7px 0 7px 24px;position:relative;font-size:14.5px;border-top:1.5px dashed #E4DCC2}
+  .svc li:first-child{border-top:none}
+  .svc li::before{
+    content:"";position:absolute;left:2px;top:13px;width:9px;height:9px;border-radius:50%;
+    background:var(--olive);border:2px solid var(--line);
+  }
+  .svc:nth-child(2) li::before{background:var(--orange)}
+  .svc:nth-child(3) li::before{background:#FFD166}
+  .svc .main-tag{position:absolute;top:-14px;left:16px}
+
+  /* ---------- AI skills ---------- */
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .skill{padding:24px 22px 20px;position:relative;display:flex;flex-direction:column}
+  .skill:nth-child(1){transform:rotate(-.5deg)}
+  .skill:nth-child(2){transform:rotate(.4deg)}
+  .skill:nth-child(3){transform:rotate(-.4deg)}
+  .skill .top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px}
+  .skill h3{margin:0;font-size:20px;line-height:1.35}
+  .skill .who{margin:0 0 10px;font-size:13.5px;font-weight:700;color:var(--olive-dark)}
+  .skill:nth-child(2) .who{color:var(--orange-dark)}
+  .skill .desc{margin:0 0 14px;font-size:14.5px;color:var(--ink-soft);flex:1}
+  .skill .plat{margin:0;font-size:13px;color:var(--ink-soft);border-top:1.5px dashed #E4DCC2;padding-top:10px}
+  .skill .plat b{color:var(--ink)}
+
+  /* ---------- digital products ---------- */
+  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .prod{padding:0;overflow:hidden;display:flex;flex-direction:column}
+  .prod .canvas{padding:18px;position:relative;border-bottom:2px solid var(--line);flex:1}
+  .prod .canvas.a{background:var(--olive-soft)}
+  .prod .canvas.b{background:var(--orange-soft)}
+  .prod .canvas.c{background:var(--blue-soft)}
+  .prod .canvas.d{background:var(--pink-soft)}
+  .prod .canvas.e{background:var(--paper-2)}
+  .prod .canvas .t{font-weight:900;font-size:17px;line-height:1.4;max-width:10em}
+  .prod .canvas .s{font-size:12.5px;color:var(--ink-soft);margin-top:5px;max-width:20em}
+  .prod .meta{padding:13px 18px 15px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .prod .meta b{font-size:14.5px}
+  .prod .meta span{font-size:13px;color:var(--ink-soft)}
+  .prod .price{margin-left:auto;font-weight:900;color:var(--orange-dark);font-size:15px}
+  .prod-note{margin-top:16px;font-size:14px;color:var(--ink-soft)}
+
+  /* ---------- process ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .step{background:#fff;border:2px solid var(--line);border-radius:14px;padding:20px 16px 16px;position:relative;box-shadow:var(--shadow-sm)}
+  .step:nth-child(odd){transform:rotate(-.7deg)}
+  .step:nth-child(even){transform:rotate(.7deg)}
+  .step .n{
+    width:34px;height:34px;border-radius:50%;border:2px solid var(--line);background:#FFD166;
+    display:grid;place-items:center;font-weight:900;margin-bottom:10px;font-size:16px;
+  }
+  .step:nth-child(3) .n{background:var(--orange);color:#fff}
+  .step:nth-child(4) .n{background:var(--olive);color:#fff}
+  .step h3{margin:0 0 6px;font-size:16.5px;line-height:1.4}
+  .step p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+  .pay-note{
+    margin-top:26px;background:var(--orange-soft);border:2px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:22px 24px;display:flex;gap:16px;align-items:flex-start;transform:rotate(-.3deg);
+  }
+  .pay-note .bang{
+    flex:none;width:38px;height:38px;border-radius:50%;background:var(--orange);color:#fff;border:2px solid var(--line);
+    display:grid;place-items:center;font-weight:900;font-size:20px;
+  }
+  .pay-note h3{margin:0 0 4px;font-size:17px}
+  .pay-note p{margin:0;font-size:15px;color:#5A4632}
+  .pay-note p b{color:var(--ink)}
+
+  /* ---------- contact ---------- */
+  .contact-card{padding:34px 30px;position:relative;overflow:visible;transform:rotate(-.3deg)}
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:start}
+  .contact-card h2{font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif;font-weight:400;font-size:clamp(26px,4vw,36px);margin:0 0 8px;line-height:1.3}
+  .contact-card .desc{color:var(--ink-soft);margin:0 0 20px;font-size:15.5px}
+  .mail-row{display:flex;gap:12px;flex-wrap:wrap;align-items:stretch}
+  .mail-box{
+    flex:1;min-width:230px;background:var(--paper);border:2px solid var(--line);border-radius:12px;
+    padding:12px 16px;font-size:17px;font-weight:900;letter-spacing:.01em;display:flex;align-items:center;word-break:break-all;
+  }
+  .copy-msg{font-size:13.5px;color:var(--olive-dark);font-weight:700;min-height:22px;margin-top:8px}
+  .mail-tips{background:var(--olive-soft);border:2px solid var(--line);border-radius:14px;padding:18px 20px;transform:rotate(.8deg)}
+  .mail-tips h3{margin:0 0 8px;font-size:15.5px}
+  .mail-tips ul{margin:0;padding-left:20px;font-size:14.5px;color:var(--ink-soft)}
+  .mail-tips li{margin:4px 0}
+
+  footer{margin-top:70px;border-top:2px solid var(--line);background:#FFF3D6}
+  .foot{padding:26px 0 34px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .foot p{margin:0;font-size:13.5px;color:var(--ink-soft)}
+  .foot .fname{font-weight:900;color:var(--ink);font-size:15px}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr;gap:26px}
+    .stage{min-height:380px;max-width:560px}
+    .svc-grid,.skill-grid,.prod-grid{grid-template-columns:1fr;max-width:560px}
+    .steps{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1fr}
+    section{padding-top:52px}
+  }
+  @media (max-width:560px){
+    .steps{grid-template-columns:1fr}
+    .stage{min-height:400px}
+    .slide{width:86%}
+    .brand small{display:none}
+    nav.main a{padding:8px 10px;font-size:13.5px}
+    .folder-body{padding:24px 16px 18px}
+    .contact-card{padding:26px 20px}
+    .pay-note{flex-direction:column;gap:10px}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#top" aria-label="尹国强主页">
+      <span class="brand-mark">尹</span>
+      <span><b>尹国强</b><small>AI 技能 · 数字产品 · AI 内容</small></span>
+    </a>
+    <nav class="main" aria-label="页面导航">
+      <a href="#directions">在做的方向</a>
+      <a href="#skills">AI 技能</a>
+      <a href="#products">数字产品</a>
+      <a href="#process">合作方式</a>
+      <a class="nav-cta" href="#contact">联系我</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kick">
+          <span class="sticker olive">✦ 个人创作者</span>
+          <span class="sticker pink" style="transform:rotate(1.5deg)">山东临沂</span>
+        </div>
+        <h1>你好，我是<span class="hl">尹国强</span></h1>
+        <p class="en">AI Skills · Digital Products · AI Content</p>
+        <p class="tagline">做 AI 技能、数字产品和 AI 内容的个人创作者</p>
+        <p class="lead">一个人干三摊事：在 WorkBuddy、扣子这些平台上开发能直接用的 AI 技能；在小红书做解决实际问题的速查类数字产品；也帮小商家和个人做图、做 PPT、做短视频内容。都是自己动手做出来的东西，不画饼。</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#skills">看看在做的 AI 技能</a>
+          <a class="btn orange" href="mailto:253931542@qq.com?subject=%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2">发邮件聊聊</a>
+        </div>
+        <div class="hero-notes">
+          <span class="sticker">AI 技能开发中</span>
+          <span class="sticker">数字产品在小红书</span>
+          <span class="sticker">设计服务按需报价</span>
+        </div>
+      </div>
+
+      <div class="stage" aria-label="三个方向拼贴示意">
+        <div class="pin">三摊<br/>事</div>
+        <div class="slide slide-1">
+          <span class="s-tag">方向一 · AI 技能</span>
+          <h3>给小店用的 AI 技能，<br/>已经在平台上排队审核了</h3>
+          <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="slide slide-2">
+          <span class="s-tag">方向二 · 数字产品</span>
+          <h3>速查包、急救包——解决一个具体问题，做成一套卡片</h3>
+          <div class="dots-row" aria-hidden="true">
+            <i style="background:#FF7A29"></i><i style="background:#FFD166"></i><i style="background:#6C7F3A"></i><i style="background:#fff"></i>
+          </div>
+        </div>
+        <div class="slide slide-3">
+          <span class="s-tag">方向三 · AI 内容与设计服务</span>
+          <h3>做图、做 PPT、做短视频，按需求接单</h3>
+          <div class="mini-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 跑马灯 -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-in" id="tickerIn">
+      <span>AI 技能开发</span><b>✦</b><span>小红书数字产品</span><b>✦</b><span>速查卡 / 急救包</span><b>✦</b><span>做图 · PPT · 短视频</span><b>✦</b><span>先沟通需求，再确认价格</span><b>✦</b>
+    </div>
+  </div>
+
+  <!-- 在做的方向 -->
+  <section id="directions">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tape">在做的方向 · WHAT I DO</span>
+        <h2>现在和以后，主要做这三块</h2>
+        <p>不贪多：把 AI 做成能直接用的技能、把经验做成能买走的产品、把手艺做成按需接单的服务。</p>
+      </div>
+
+      <div class="folder">
+        <span class="folder-tab">📁 我的三个文件夹</span>
+        <div class="folder-body">
+          <div class="svc-grid">
+            <article class="svc">
+              <span class="sticker orange main-tag">正在推进</span>
+              <span class="no">1</span>
+              <h3>AI 技能</h3>
+              <p class="sub">在 WorkBuddy、扣子等平台开发 AI 技能</p>
+              <ul>
+                <li>《小店文案助手》：给线下小店写朋友圈文案、回复点评，免费，已提交 WorkBuddy 审核</li>
+                <li>《小店经营参谋》：帮小店做一周同城内容和到店活动方案，筹备中</li>
+                <li>《知识卡片生成》：把一段文字变成成套的信息图卡片，筹备中</li>
+              </ul>
+            </article>
+            <article class="svc">
+              <span class="no">2</span>
+              <h3>数字产品</h3>
+              <p class="sub">在小红书卖的速查类数字产品</p>
+              <ul>
+                <li>盯着大众痛点做：能查、能照着做、解决一个具体问题</li>
+                <li>已做好的有年终总结、简历面试、租房退租、新手养猫、旅行拍照等主题</li>
+                <li>定价 ¥9.9–19.9，拍下自动发货，不用等人工</li>
+              </ul>
+            </article>
+            <article class="svc">
+              <span class="no">3</span>
+              <h3>AI 内容与设计服务</h3>
+              <p class="sub">帮小商家和个人做内容，按需求报价</p>
+              <ul>
+                <li>做图：海报、配图、封面等单张设计图</li>
+                <li>做 PPT：汇报、总结、提案的排版与整套制作</li>
+                <li>做短视频内容：AI 视频与内容策划制作</li>
+                <li>从最简单的小单做起，聊清楚再报价</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI 技能 -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tape">AI 技能 · AI SKILLS</span>
+        <h2>正在做的三个 AI 技能</h2>
+        <p>思路是「免费版先能用、付费版做完全」：先把一个真能帮上忙的技能做出来上架，再往深里做。</p>
+      </div>
+      <div class="skill-grid">
+        <article class="card skill">
+          <div class="top">
+            <h3>《小店文案助手》</h3>
+            <span class="status review">审核中</span>
+          </div>
+          <p class="who">给线下小店老板用的 · 免费</p>
+          <p class="desc">开小店的最愁每天发什么：这个技能帮小店写朋友圈文案、回复顾客点评，输入店里情况就能出文案，不用自己憋词。</p>
+          <p class="plat">平台：<b>WorkBuddy</b> · 已提交审核，等结果</p>
+        </article>
+        <article class="card skill">
+          <div class="top">
+            <h3>《小店经营参谋》</h3>
+            <span class="status prep">筹备中</span>
+          </div>
+          <p class="who">《小店文案助手》的完全体</p>
+          <p class="desc">不止写文案：输入行业、城市、主推产品和客单价，给小店出一周同城内容表、一个到店活动方案，再配上要用到的物料文案，一套齐活。</p>
+          <p class="plat">平台：<b>WorkBuddy</b> · 免费版过审后接着做</p>
+        </article>
+        <article class="card skill">
+          <div class="top">
+            <h3>《知识卡片生成》</h3>
+            <span class="status prep">筹备中</span>
+          </div>
+          <p class="who">把文字变成卡片的技能</p>
+          <p class="desc">给它一段文字，它排成一套设计好的信息图卡片——就是我做小红书速查包的那套手艺，做成谁都能用的技能。</p>
+          <p class="plat">平台：<b>扣子</b> · 商户开通后上架</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 数字产品 -->
+  <section id="products">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tape">数字产品 · DIGITAL PRODUCTS</span>
+        <h2>小红书在卖的速查包</h2>
+        <p>都是已经做好、能上手的成品：一个产品解决一个具体问题，卡片形式，查起来快。统一价位 ¥9.9–19.9。</p>
+      </div>
+      <div class="prod-grid">
+        <article class="card prod">
+          <div class="canvas a">
+            <div class="t">年终总结PPT急救包</div>
+            <div class="s">到了年底要交总结又没头绪：框架、话术、页面结构都给你备好，照着填就能交差。</div>
+          </div>
+          <div class="meta"><b>职场办公</b><span>速查卡套装</span><span class="price">¥9.9–19.9</span></div>
+        </article>
+        <article class="card prod">
+          <div class="canvas b">
+            <div class="t">简历+面试急救包</div>
+            <div class="s">简历不会写、面试心里没底：简历改法加高频面试问题的话术，一包搞定求职最急的两件事。</div>
+          </div>
+          <div class="meta"><b>求职</b><span>速查卡套装</span><span class="price">¥9.9–19.9</span></div>
+        </article>
+        <article class="card prod">
+          <div class="canvas c">
+            <div class="t">租房退租避坑包</div>
+            <div class="s">签合同、入住验房、退租退押金，每个环节容易踩的坑和要留的证据，都列成清单。</div>
+          </div>
+          <div class="meta"><b>生活避坑</b><span>速查卡套装</span><span class="price">¥9.9–19.9</span></div>
+        </article>
+        <article class="card prod">
+          <div class="canvas d">
+            <div class="t">新手养猫速查包</div>
+            <div class="s">刚接猫回家不知道怎么养：吃什么、打什么疫苗、哪些东西猫碰都不能碰，一套卡查明白。</div>
+          </div>
+          <div class="meta"><b>宠物</b><span>速查卡套装</span><span class="price">¥9.9–19.9</span></div>
+        </article>
+        <article class="card prod">
+          <div class="canvas e">
+            <div class="t">旅行拍照姿势速查卡</div>
+            <div class="s">出去玩拍照只会比耶：按海边、山里、古城、街头等场景分好姿势和机位，照着摆就行。</div>
+          </div>
+          <div class="meta"><b>旅行</b><span>速查卡套装</span><span class="price">¥9.9–19.9</span></div>
+        </article>
+        <article class="card prod">
+          <div class="canvas a">
+            <div class="t">后面还会继续上新</div>
+            <div class="s">选品就一条标准：大家真在搜、真能解决问题的痛点，才值得做成产品。</div>
+          </div>
+          <div class="meta"><b>持续更新</b><span>新主题筹备中</span></div>
+        </article>
+      </div>
+      <p class="prod-note">购买方式：在小红书店铺里直接下单，拍下后系统自动发货，不用等我人工发。</p>
+    </div>
+  </section>
+
+  <!-- 合作方式 -->
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tape">合作方式 · HOW IT WORKS</span>
+        <h2>接单合作，四步说清</h2>
+        <p>AI 内容与设计服务的合作方式：先沟通、再确认，钱和内容都对上了才开工，不糊弄。</p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <span class="n">1</span>
+          <h3>先沟通需求</h3>
+          <p>发邮件说清想做什么、大概多少量、什么时候要、有没有参考风格，有现成素材可以一起发来。</p>
+        </article>
+        <article class="step">
+          <span class="n">2</span>
+          <h3>确认内容和价格</h3>
+          <p>我看完需求回复要做的内容和最终价格，你确认没问题，再进入付款环节，不做一半再加价。</p>
+        </article>
+        <article class="step">
+          <span class="n">3</span>
+          <h3>付款后开始制作</h3>
+          <p>付款走支付宝或微信。确认实际到账后正式开工，制作中有进度我会同步给你。</p>
+        </article>
+        <article class="step">
+          <span class="n">4</span>
+          <h3>按约定交付</h3>
+          <p>按事先说好的格式和时间交付成品，该改的地方按约定调整到确认版本为止。</p>
+        </article>
+      </div>
+
+      <div class="pay-note" role="note">
+        <span class="bang">!</span>
+        <div>
+          <h3>关于付款到账，先说清这一条</h3>
+          <p><b>付款截图不等于到账，一律以实际到账为准。</b>确认到账后我会告诉你并开始制作；如果只发了截图、款项还没实际到账，我会如实说明，等到账后再开工。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="card contact-card">
+        <span class="tape" style="position:absolute;top:-13px;left:28px">联系我 · CONTACT</span>
+        <div class="contact-grid">
+          <div>
+            <h2>有活儿想聊？<br/>直接发邮件过来</h2>
+            <p class="desc">不管是想约做图、做 PPT、做短视频，还是对 AI 技能、数字产品有想法，都可以发邮件。我先看需求，回复内容和报价，确认后再付款、再开工。</p>
+            <div class="mail-row">
+              <div class="mail-box" id="mailText">253931542@qq.com</div>
+              <button class="btn primary" type="button" id="copyBtn">复制邮箱</button>
+              <a class="btn orange" href="mailto:253931542@qq.com?subject=%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2">写邮件</a>
+            </div>
+            <p class="copy-msg" id="copyMsg" aria-live="polite"></p>
+          </div>
+          <aside class="mail-tips">
+            <h3>✎ 邮件里写清这几样，回复更快</h3>
+            <ul>
+              <li>想做什么：做图 / PPT / 短视频 / 其他</li>
+              <li>大概数量，手头有没有现成素材</li>
+              <li>希望什么时候交付</li>
+              <li>喜欢的风格或参考图（没有也没关系）</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <p><span class="fname">尹国强</span><br/>做 AI 技能、数字产品和 AI 内容的个人创作者 — AI 技能 / 小红书数字产品 / 做图·PPT·短视频服务</p>
+    <p>联系邮箱：253931542@qq.com<br/>合作付款走支付宝 / 微信，以实际到账为准。</p>
+  </div>
+</footer>
+
+<script>
+  // 跑马灯内容复制一份，实现无缝滚动
+  (function () {
+    var t = document.getElementById('tickerIn');
+    if (t) t.innerHTML += t.innerHTML;
+  })();
+
+  // 复制邮箱（页面内提示，不用弹窗）
+  (function () {
+    var btn = document.getElementById('copyBtn');
+    var msg = document.getElementById('copyMsg');
+    var email = '253931542@qq.com';
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      function done(ok) {
+        msg.textContent = ok ? '✓ 邮箱已复制，去粘贴发邮件吧。' : '复制没成功，请长按/手动记下邮箱：' + email;
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(function () { done(true); }, function () { fallback(); });
+      } else { fallback(); }
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = email;
+        ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        done(ok);
+      }
+    });
+  })();
+</script>
+</body>
+</html>
